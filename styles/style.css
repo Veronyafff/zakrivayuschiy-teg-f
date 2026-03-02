@@ -13,4 +13,372 @@
 .page {
   min-inline-size: 320px;
   min-block-size: 100dvb;
+  font-family: var(--main-font), sans-serif;
+  background-size: cover;
+  background-attachment: fixed;
+  background-image:
+    repeating-linear-gradient(to right, #d3d3d3 0 2px, transparent 2px 4px),
+    repeating-linear-gradient(to bottom, #d3d3d3 0 2px, transparent 2px 4px),
+    linear-gradient(to bottom, #e7e7e7 0.01%, #1a1a1a 100%);
+  font-variation-settings: "wght" 410;
+}
+
+.header {
+  background-color: var(--main-bg-color);
+  font-family: var(--accent-font), fantasy;
+  display: grid;
+  gap: var(--header-gap);
+  justify-items: center;
+  margin: 98px auto;
+  padding: var(--header-padding) 0;
+  border: var(--border-block);
+}
+
+.block-width {
+  inline-size: var(--block-width);
+}
+.header__title {
+  font-size: var(--header-logo-size);
+}
+.header__text {
+  text-transform: var(--text-transform);
+  font-size: var(--header-text-size);
+}
+
+.content__cards-list {
+  margin: 0 auto;
+  display: grid;
+  gap: var(--section-gap);
+}
+.card {
+  background-color: var(--main-bg-color);
+  font-family: var(--main-font), sans-serif;
+  font-size: var(--main-text-size);
+  border: var(--border-block);
+}
+
+.card__title {
+  border-bottom: var(--border-block);
+  padding: 4px 10px;
+  font-size: var(--card-title-size);
+  font-variation-settings: "wght" 715;
+}
+
+.card__label {
+  position: relative;
+}
+
+.card__label-image {
+  width: 100%;
+  line-height: 22px;
+  border-bottom: var(--border-block);
+  opacity: 0.6;
+  mix-blend-mode: hard-light;
+}
+.card__label-text {
+  position: absolute;
+  font-size: var(--label-text-size);
+  text-transform: var(--text-transform);
+  color: var(--main-text-color);
+  right: 25px;
+  top: 25px;
+  font-family: var(--accent-font);
+  -webkit-text-stroke: var(--text-stroke);
+}
+
+@supports (text-stroke: var(--text-stroke)) {
+  .card__label-text {
+    text-stroke: var(--text-stroke);
+  }
+}
+
+.card__paragraph {
+  padding: clamp(1.25rem, 1.25rem + 0vw, 1.25rem)
+    clamp(1.5625rem, 1.5625rem + 0vw, 1.5625rem);
+  display: grid;
+  gap: 25px;
+}
+
+/* Кнопки  */
+
+.button {
+  font-family: var(--accent-font), fantasy;
+  font-size: var(--button-text-size);
+  cursor: pointer;
+  background-color: transparent;
+  box-shadow: 0 0 0 transparent;
+  color: #000;
+  position: relative;
+}
+
+.button__cards {
+  display: flex;
+  justify-content: end;
+  gap: 5px;
+  margin-inline-end: 25px;
+  margin-block: 5px 25px;
+}
+
+/* кнопка heart */
+
+.card__icon-button {
+  background-color: transparent;
+  border: 2px solid transparent;
+  transition: border-color 0.3s ease;
+  padding: 0;
+}
+
+.like-icon {
+  display: block;
+  transform-origin: center;
+  object-fit: contain;
+}
+
+/* Анимация кнопки heart */
+
+.contour {
+  transition: fill 0.1s linear;
+}
+
+.main-body {
+  transition: fill 0.3s linear;
+  color: transparent;
+}
+
+.core {
+  transition: fill 0.3s linear 0.03s;
+  color: transparent;
+}
+
+.sparks {
+  transition: fill 0.1s linear;
+  opacity: var(--opacity);
+}
+
+/* Наведение кнопки heart */
+.like-icon:hover .core {
+  fill: var(--contour-color);
+  transition: fill 0.3s linear;
+}
+
+.like-icon:hover .main-body {
+  fill: var(--contour-color);
+  transition: fill 0.3s linear 0.05s;
+}
+
+/* Клик по иконке heart */
+
+.like-icon:active .core {
+  fill: var(--animation-fill-color);
+  transition: fill 0.3s linear;
+}
+
+.like-icon:active .main-body {
+  fill: var(--animation-fill-color);
+  transition: fill 0.3s linear 0.05s;
+}
+
+.like-icon.is-liked .core {
+  fill: var(--animation-fill-color);
+  transition: fill 0.3s linear;
+}
+
+.like-icon.is-liked .main-body {
+  fill: var(--animation-fill-color);
+  transition: fill 0.3s linear 0.05s;
+}
+
+.like-icon.is-liked .contour {
+  fill: var(--animation-fill-color);
+  transition: fill 0.3s linear 0.06s;
+}
+
+.like-icon.is-liked .heart {
+  animation: change-scale 0.3s ease-in 0.1s;
+}
+
+.heart {
+  transform-origin: center;
+}
+
+.like-icon.is-liked .sparks {
+  animation: change-opacity 0.3s ease-in 0.3s;
+}
+
+/* Состонияе фокуса всех кнопок */
+
+button:focus {
+  outline: none;
+}
+.card__icon-button:focus-visible {
+  border-color: var(--border-color);
+}
+
+.card__like-button:focus-visible,
+.floppy__save-button:focus-visible,
+.dialog__ok-button:focus-visible {
+  box-shadow: 2px 2px 0 0 var(--border-color);
+  transition: box-shadow 0.3s ease;
+}
+
+/* кнопки Like */
+
+.card__like-button {
+  max-block-size: 38px;
+  min-inline-size: 130px;
+  position: relative;
+  overflow: hidden;
+  /* background-color: transparent; */
+}
+
+/* Анимация кнопки Like */
+
+.card__like-button::before {
+  content: "";
+  position: absolute;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s ease-in-out;
+  inset: 0;
+  background-color: #000;
+}
+
+.card__like-button:hover::before {
+  transform: scaleX(1);
+}
+
+.button__text {
+  position: relative;
+  z-index: 10;
+  color: #fff;
+  mix-blend-mode: difference;
+}
+
+/* Дискета */
+
+.button__container {
+  display: flex;
+  justify-content: center;
+  margin: 50px;
+}
+
+.floppy__save-button {
+  display: flex;
+  gap: 8px;
+  min-block-size: 55px;
+  min-inline-size: 335px;
+  background-color: var(--button-bg-color);
+  align-items: center;
+  padding-inline: 18px;
+  position: relative;
+  overflow: hidden;
+}
+
+.floppy__save-button::before {
+  content: "";
+  position: absolute;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s ease-in-out;
+  inset: 0;
+  background-color: var(--button-bg-color);
+  mix-blend-mode: difference;
+}
+
+.floppy__save-button:hover:before {
+  transform: scaleX(1);
+}
+
+.icon-s {
+  width: 21px;
+  flex-shrink: 0;
+}
+
+.icon-l {
+  width: 39px;
+  flex-shrink: 0;
+}
+
+/* Вспл окно */
+
+.dialog {
+  width: 353px;
+  padding: 30px;
+}
+
+dialog::backdrop {
+  background-color: var(--backdrop-color);
+  opacity: 0.75;
+}
+
+.dialog__container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.dialog__container-svg {
+  display: flex;
+  gap: 20px;
+}
+
+.dialog__text {
+  font-family: "PressStart2P-Regular", fantasy;
+  font-size: 14px;
+  text-transform: uppercase;
+  line-height: 150%;
+  text-align: left;
+}
+
+.dialog__ok-button {
+  min-block-size: 38px;
+  min-inline-size: 293px;
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+}
+
+.dialog__ok-button::before {
+  content: "";
+  position: absolute;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s ease-in-out;
+  inset: 0;
+  background-color: var(--button-bg-color);
+  mix-blend-mode: difference;
+}
+
+.dialog__ok-button:hover::before {
+  transform: scaleX(1);
+}
+
+/* Фильтры для картинок */
+
+.main_theme {
+  filter: saturate(130%);
+}
+
+.eleven_close {
+  filter: hue-rotate(-90deg);
+}
+
+.pixel_characters {
+  filter: sepia(100%);
+}
+
+.hellfire_club {
+  filter: contrast(220%);
+}
+
+.mall {
+  filter: sepia(1) contrast(2) brightness(80%);
+}
+
+.words {
+  filter: brightness(210%);
+}
+
+.eleven__power {
+  filter: blur(0.2rem);
 }
