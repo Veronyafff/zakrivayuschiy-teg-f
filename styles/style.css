@@ -16,11 +16,8 @@
   font-family: var(--main-font), sans-serif;
   background-size: cover;
   background-attachment: fixed;
-  background-image:
-    repeating-linear-gradient(to right, #d3d3d3 0 2px, transparent 2px 4px),
-    repeating-linear-gradient(to bottom, #d3d3d3 0 2px, transparent 2px 4px),
-    linear-gradient(to bottom, #e7e7e7 0.01%, #1a1a1a 100%);
-  font-variation-settings: "wght" 410;
+  background-image: var(--page-gradient);
+  font-variation-settings: "wght" var(--normal-font-weight);
 }
 
 .header {
@@ -61,7 +58,7 @@
   border-bottom: var(--border-block);
   padding: 4px 10px;
   font-size: var(--card-title-size);
-  font-variation-settings: "wght" 715;
+  font-variation-settings: "wght" var(--bold-font-weight);
 }
 
 .card__label {
@@ -99,6 +96,10 @@
   gap: 25px;
 }
 
+.accent__span {
+  color: var(--accent-color-text);
+}
+
 /* Кнопки  */
 
 .button {
@@ -107,7 +108,6 @@
   cursor: pointer;
   background-color: transparent;
   box-shadow: 0 0 0 transparent;
-  color: #000;
   position: relative;
 }
 
@@ -115,8 +115,8 @@
   display: flex;
   justify-content: end;
   gap: 5px;
-  margin-inline-end: 25px;
-  margin-block: 5px 25px;
+  margin-inline-end: clamp(1.5625rem, 1.5625rem + 0vw, 1.5625rem);
+  margin-block: clamp(1.5625rem, 1.5625rem + 0vw, 1.5625rem);
 }
 
 /* кнопка heart */
@@ -228,7 +228,13 @@ button:focus {
   min-inline-size: 130px;
   position: relative;
   overflow: hidden;
-  /* background-color: transparent; */
+}
+
+.button__text {
+  position: relative;
+  z-index: 10;
+  color: var(--button-bg-color);
+  mix-blend-mode: difference;
 }
 
 /* Анимация кнопки Like */
@@ -240,18 +246,12 @@ button:focus {
   transform-origin: left;
   transition: transform 0.5s ease-in-out;
   inset: 0;
-  background-color: #000;
+  background-color: var(--button-bg-color);
+  mix-blend-mode: difference;
 }
 
 .card__like-button:hover::before {
   transform: scaleX(1);
-}
-
-.button__text {
-  position: relative;
-  z-index: 10;
-  color: #fff;
-  mix-blend-mode: difference;
 }
 
 /* Дискета */
@@ -265,10 +265,11 @@ button:focus {
 .floppy__save-button {
   display: flex;
   gap: 8px;
-  min-block-size: 55px;
-  min-inline-size: 335px;
+  min-block-size: clamp(55px, 94.2113px + -2.723vw, 84px);
+  min-inline-size: clamp(19.125rem, 17.056rem + 8.9231vw, 20.9375rem);
   background-color: var(--button-bg-color);
   align-items: center;
+  justify-content: center;
   padding-inline: 18px;
   position: relative;
   overflow: hidden;
@@ -323,9 +324,9 @@ dialog::backdrop {
 }
 
 .dialog__text {
-  font-family: "PressStart2P-Regular", fantasy;
-  font-size: 14px;
-  text-transform: uppercase;
+  font-family: var(--main-font) fantasy;
+  font-size: var(--button-text-size);
+  text-transform: var(--text-transform);
   line-height: 150%;
   text-align: left;
 }
@@ -333,7 +334,7 @@ dialog::backdrop {
 .dialog__ok-button {
   min-block-size: 38px;
   min-inline-size: 293px;
-  text-transform: uppercase;
+  text-transform: var(--text-transform);
   position: relative;
   overflow: hidden;
 }
@@ -381,4 +382,14 @@ dialog::backdrop {
 
 .eleven__power {
   filter: blur(0.2rem);
+}
+
+@media (width <=375px) {
+  .floppy__save-button {
+    flex-direction: column;
+  }
+
+  .icon-s {
+    width: 28px;
+  }
 }

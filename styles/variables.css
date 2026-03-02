@@ -1,34 +1,41 @@
 /* В этом файле будут храниться все значения переменных в исходном состоянии, а так же их изменения в зависимости от ширины устройства */
 
 :root {
-    /* Цвета */
-    --main-bg-color: #fff;
-    --button-bg-color: #fff;
-    --color-text: #fff;
-    --color-focus: #000;
-    --main-text-color: #000;
-    --border-color: #000;
-    --backdrop-color: #000;
-    
-    /* Шрифты, отступ */
---main-font: Inter-Variable;
---accent-font: PressStart2P-Regular;
---border-block: 2px solid #000;
---text-stroke: 1px #d3d3d3;
---block-width: clamp(23.4375rem, 0rem + 100vw, 43.75rem);
---header-logo-size: clamp(3.0625rem, 1.9087rem + 4.9231vw, 4.0625rem);
---header-text-size:  clamp(0.875rem, 0.226rem + 2.7692vw, 1.4375rem);  
---header-padding:  clamp(7.625rem, 7.0409rem + 2.4922vw, 8.125rem);
---card-title-size: clamp(1.125rem, 1.125rem + 0vw, 1.125rem);
---main-text-size:  clamp(1.125rem, 1.125rem + 0vw, 1.125rem);
---label-text-size: clamp(0.875rem, 0.875rem + 0vw, 0.875rem);;
---button-text-size: clamp(0.875rem, 0.875rem + 0vw, 0.875rem);;
---header-gap: 20px;
---section-gap: 50px;
---text-transform: uppercase;
-/* Анимация */
---contour-color: #000;
---animation-fill-color: #FF0000;
---sparks-color: #FF0000;
---opacity: 0;
+  /* Цвета */
+  --page-gradient:
+    repeating-linear-gradient(to right, #d3d3d3 0 2px, transparent 2px 4px),
+    repeating-linear-gradient(to bottom, #d3d3d3 0 2px, transparent 2px 4px),
+    linear-gradient(to bottom, #e7e7e7 0.01%, #1a1a1a 100%);
+  --main-bg-color: #fff;
+  --button-bg-color: #fff;
+  --color-text: #fff;
+  --color-focus: #000;
+  --accent-color-text: #9932cc;
+  --main-text-color: #000;
+  --border-color: #000;
+  --backdrop-color: #000;
+
+  /* Шрифты, отступ */
+  --main-font: Inter-Variable;
+  --accent-font: PressStart2P-Regular;
+  --normal-font-weight: 410;
+  --bold-font-weight: 715;
+  --border-block: 2px solid #000;
+  --text-stroke: 1px #d3d3d3;
+  --block-width: clamp(23.4375rem, 0rem + 100vw, 43.75rem);
+  --header-logo-size: clamp(3.0625rem, 1.9087rem + 4.9231vw, 4.0625rem);
+  --header-text-size: clamp(0.875rem, 0.226rem + 2.7692vw, 1.4375rem);
+  --header-padding: clamp(7.625rem, 7.0409rem + 2.4922vw, 8.125rem);
+  --card-title-size: clamp(1.125rem, 1.125rem + 0vw, 1.125rem);
+  --main-text-size: clamp(1.125rem, 1.125rem + 0vw, 1.125rem);
+  --label-text-size: clamp(0.875rem, 0.875rem + 0vw, 0.875rem);
+  --button-text-size: clamp(0.875rem, 0.875rem + 0vw, 0.875rem);
+  --header-gap: 20px;
+  --section-gap: 50px;
+  --text-transform: uppercase;
+  /* Анимация */
+  --contour-color: #000;
+  --animation-fill-color: #ff0000;
+  --sparks-color: #ff0000;
+  --opacity: 0;
 }
