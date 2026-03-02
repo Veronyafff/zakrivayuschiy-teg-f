@@ -324,7 +324,7 @@ dialog::backdrop {
 }
 
 .dialog__text {
-  font-family: var(--main-font) fantasy;
+  font-family: var(--accent-font), fantasy;
   font-size: var(--button-text-size);
   text-transform: var(--text-transform);
   line-height: 150%;
