@@ -107,10 +107,13 @@
 /* Кнопки  */
 
 .button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-family: var(--accent-font), fantasy;
   font-size: var(--button-text-size);
   cursor: pointer;
-  background-color: transparent;
+  background-color: var(--button-bg-color);
   box-shadow: 0 0 0 transparent;
   position: relative;
   overflow: hidden;
@@ -224,7 +227,7 @@ button:focus {
   box-shadow: 2px 2px 0 0 var(--border-color);
 }
 
-button::before {
+.button::before {
   content: "";
   position: absolute;
   transform: scaleX(0);
@@ -248,7 +251,7 @@ button::before {
   mix-blend-mode: difference;
 }
 
-.card__like-button:hover::before {
+.button:hover::before {
   transform: scaleX(1);
 }
 
@@ -261,18 +264,10 @@ button::before {
 }
 
 .floppy__save-button {
-  display: flex;
   gap: 8px;
   min-block-size: clamp(55px, 94.2113px + -2.723vw, 84px);
   min-inline-size: clamp(19.125rem, 17.056rem + 8.9231vw, 20.9375rem);
-  background-color: var(--button-bg-color);
-  align-items: center;
-  justify-content: center;
   padding-inline: 18px;
-}
-
-.floppy__save-button:hover:before {
-  transform: scaleX(1);
 }
 
 .save-button__icon {
@@ -319,10 +314,6 @@ dialog::backdrop {
 .dialog__ok-button {
   min-block-size: 38px;
   text-transform: var(--text-transform);
-}
-
-.dialog__ok-button:hover::before {
-  transform: scaleX(1);
 }
 
 /* Фильтры для картинок */
