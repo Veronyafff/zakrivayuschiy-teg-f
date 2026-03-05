@@ -74,24 +74,28 @@
 }
 .card__label-text {
   position: absolute;
-  font-size: var(--label-text-size);
+  font-size: 14px;
   text-transform: var(--text-transform);
   color: var(--main-text-color);
   right: 25px;
   top: 25px;
   font-family: var(--accent-font);
-  -webkit-text-stroke: var(--text-stroke);
+  text-shadow:
+    -1px 0 var(--text-stroke),
+    0 1px var(--text-stroke),
+    1px 0 var(--text-stroke),
+    0 -1px var(--text-stroke);
 }
 
-@supports (text-stroke: var(--text-stroke)) {
+@supports (-webkit-text-stroke: var(--text-stroke)) {
   .card__label-text {
-    text-stroke: var(--text-stroke);
+    -webkit-text-stroke: 1px var(--text-stroke);
+    text-shadow: none;
   }
 }
 
 .card__paragraph {
-  padding: clamp(1.25rem, 1.25rem + 0vw, 1.25rem)
-    clamp(1.5625rem, 1.5625rem + 0vw, 1.5625rem);
+  padding: 25px 25px 0;
   display: grid;
   gap: 25px;
 }
@@ -109,9 +113,11 @@
   background-color: transparent;
   box-shadow: 0 0 0 transparent;
   position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
 }
 
-.button__cards {
+.card__button {
   display: flex;
   justify-content: end;
   gap: 5px;
@@ -126,6 +132,7 @@
   border: 2px solid transparent;
   transition: border-color 0.3s ease;
   padding: 0;
+  cursor: pointer;
 }
 
 .like-icon {
@@ -151,7 +158,6 @@
 }
 
 .sparks {
-  transition: fill 0.1s linear;
   opacity: var(--opacity);
 }
 
@@ -214,32 +220,11 @@ button:focus {
   border-color: var(--border-color);
 }
 
-.card__like-button:focus-visible,
-.floppy__save-button:focus-visible,
-.dialog__ok-button:focus-visible {
+.button:focus-visible {
   box-shadow: 2px 2px 0 0 var(--border-color);
-  transition: box-shadow 0.3s ease;
 }
 
-/* кнопки Like */
-
-.card__like-button {
-  max-block-size: 38px;
-  min-inline-size: 130px;
-  position: relative;
-  overflow: hidden;
-}
-
-.button__text {
-  position: relative;
-  z-index: 10;
-  color: var(--button-bg-color);
-  mix-blend-mode: difference;
-}
-
-/* Анимация кнопки Like */
-
-.card__like-button::before {
+button::before {
   content: "";
   position: absolute;
   transform: scaleX(0);
@@ -247,6 +232,19 @@ button:focus {
   transition: transform 0.5s ease-in-out;
   inset: 0;
   background-color: var(--button-bg-color);
+  mix-blend-mode: difference;
+}
+
+/* кнопки Like */
+
+.card__like-button {
+  min-inline-size: 130px;
+}
+
+.button__text {
+  position: relative;
+  z-index: 10;
+  color: var(--button-bg-color);
   mix-blend-mode: difference;
 }
 
@@ -271,31 +269,18 @@ button:focus {
   align-items: center;
   justify-content: center;
   padding-inline: 18px;
-  position: relative;
-  overflow: hidden;
-}
-
-.floppy__save-button::before {
-  content: "";
-  position: absolute;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.5s ease-in-out;
-  inset: 0;
-  background-color: var(--button-bg-color);
-  mix-blend-mode: difference;
 }
 
 .floppy__save-button:hover:before {
   transform: scaleX(1);
 }
 
-.icon-s {
+.save-button__icon {
   width: 21px;
   flex-shrink: 0;
 }
 
-.icon-l {
+.dialog__icon {
   width: 39px;
   flex-shrink: 0;
 }
@@ -333,21 +318,7 @@ dialog::backdrop {
 
 .dialog__ok-button {
   min-block-size: 38px;
-  min-inline-size: 293px;
   text-transform: var(--text-transform);
-  position: relative;
-  overflow: hidden;
-}
-
-.dialog__ok-button::before {
-  content: "";
-  position: absolute;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.5s ease-in-out;
-  inset: 0;
-  background-color: var(--button-bg-color);
-  mix-blend-mode: difference;
 }
 
 .dialog__ok-button:hover::before {
@@ -356,31 +327,31 @@ dialog::backdrop {
 
 /* Фильтры для картинок */
 
-.main_theme {
+.card__label-image_saturate {
   filter: saturate(130%);
 }
 
-.eleven_close {
+.card__label-image_rotate {
   filter: hue-rotate(-90deg);
 }
 
-.pixel_characters {
+.card__label-image_sepia {
   filter: sepia(100%);
 }
 
-.hellfire_club {
+.card__label-image_contrast {
   filter: contrast(220%);
 }
 
-.mall {
+.card__label-image_multiple {
   filter: sepia(1) contrast(2) brightness(80%);
 }
 
-.words {
+.card__label-image_brightness {
   filter: brightness(210%);
 }
 
-.eleven__power {
+.card__label-image_blur {
   filter: blur(0.2rem);
 }
 

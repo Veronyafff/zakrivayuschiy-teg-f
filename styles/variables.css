@@ -9,6 +9,7 @@
   --main-bg-color: #fff;
   --button-bg-color: #fff;
   --color-text: #fff;
+  --text-stroke: #d3d3d3;
   --color-focus: #000;
   --accent-color-text: #9932cc;
   --main-text-color: #000;
@@ -17,11 +18,10 @@
 
   /* Шрифты, отступ */
   --main-font: Inter-Variable;
-  --accent-font: PressStart2P-Regular;
+  --accent-font: PressStart2P;
   --normal-font-weight: 410;
   --bold-font-weight: 715;
   --border-block: 2px solid #000;
-  --text-stroke: 1px #d3d3d3;
   --block-width: clamp(23.4375rem, 0rem + 100vw, 43.75rem);
   --header-logo-size: clamp(3.0625rem, 1.9087rem + 4.9231vw, 4.0625rem);
   --header-text-size: clamp(0.875rem, 0.226rem + 2.7692vw, 1.4375rem);
